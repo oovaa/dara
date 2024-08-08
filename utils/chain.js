@@ -3,23 +3,22 @@ import { ChatCohere } from '@langchain/cohere'
 import { StringOutputParser } from '@langchain/core/output_parsers'
 import { RunnableSequence } from '@langchain/core/runnables'
 
-const q_template = `
-    You are a helpful assistant that answers questions. Please ask me anything.
-    question: {question}
-`
-
-const q_prompt = PromptTemplate.fromTemplate(q_template)
+import { summarize_prompt } from './prompts.js'
+import { parseTEXT } from './parser.js'
 
 const llm = new ChatCohere({
   model: 'command-r-plus',
   temperature: 0,
-  maxRetries: 2,
+  maxRetries: 2
 })
 
-const chain = RunnableSequence.from([q_prompt, llm, new StringOutputParser()])
+const data = await parseTEXT('./story.txt')
 
-let ans = chain.invoke({
-  question: 'hi there',
-})
+const chain = RunnableSequence.from([summarize_prompt, llm, new StringOutputParser()])
 
-console.log(await ans)
+// uncomment adn run to test
+// let ans = chain.invoke({
+//   information: data
+// })
+
+// console.log(await ans)
