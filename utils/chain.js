@@ -33,4 +33,4 @@ async function testSummarization() {
 }
 
 // Uncomment to run the test
-// testSummarization()
+testSummarization()
