@@ -23,4 +23,6 @@ TestResults.xml
 
 bun.lockb
 
+.env/
+
 node_modules/
