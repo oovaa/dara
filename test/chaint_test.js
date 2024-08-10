@@ -1,10 +1,12 @@
-import { getSummarizeRes } from '../utils/chain'
-import { parseTEXT } from '../utils/parser'
+import { getSummarizeRes } from '../tools/summarize.js'
+import generateQs from '../tools/generateQs.js'
+import { parser } from '../utils/parser.js'
+
 
 // For testing
 async function testSummarization() {
-  const info = await parseTEXT('./story.txt')
-  const data = await getSummarizeRes(info)
+  const info = await parser('./story.txt')
+  const data = await generateQs(info)
   console.log(data)
 }
 
