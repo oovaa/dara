@@ -2,6 +2,9 @@
   "name": "dara",
   "module": "index.ts",
   "type": "module",
+  "scripts": {
+    "dev": "nodemon index.js"
+  },
   "devDependencies": {
     "@types/bun": "latest"
   },
@@ -19,9 +22,12 @@
     "express-async-handler": "^1.2.0",
     "express-validator": "^7.2.0",
     "langchain": "^0.2.13",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.1",
     "nodemon": "^3.1.4",
     "officeparser": "^4.1.1",
     "path": "^0.12.7",
-    "pdf-parse": "^1.1.1"
+    "pdf-parse": "^1.1.1",
+    "uuid": "^10.0.0"
   }
 }
