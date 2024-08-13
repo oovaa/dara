@@ -23,8 +23,7 @@ TestResults.xml
 
 bun.lockb
 
-.env/
+.env
+package-lock.json
 
 node_modules/
-
-package-lock.json/
