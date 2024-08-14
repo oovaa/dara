@@ -6,6 +6,7 @@ const apiKey = process.env.API_KEY;
 
 const llm = new ChatCohere({
     apiKey,
+    outputFormat: 'json',
     model: 'command-r-plus',
     temperature: 0,
     maxRetries: 2

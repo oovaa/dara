@@ -12,8 +12,9 @@ const generate = expressAsyncHandler(async (req, res, next) => {
     try {
        const docs = await parser(req.file.path)
        const Qs = await generateQs(docs)
+       console.log(Qs);
 
-       return res.status(200).json({"result": Qs})
+       return res.status(200).json(Qs)
     } catch (err) {
        return next (
         new ApiError(err.message, 500)

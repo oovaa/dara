@@ -11,6 +11,7 @@ information: {information}.
 
 Note: you should provide atleast 15 mcq, and 5 challenging/open-ended questions.
 Note: you should provide the answers of all the questions in order at the end.
+Note: respond in JSON with "questions", and "answers" keys.
 `
 
 const qa_prompt = PromptTemplate.fromTemplate(qa_template)
