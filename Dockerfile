@@ -7,8 +7,6 @@ COPY . .
 
 RUN npm install
 
-ENV API_KEY="vMAjA6npjAdbYZJUegVrxGYzHfzOhWXlGznHSw8V" 
-
 EXPOSE 8000
 
 ENTRYPOINT [ "node", "index.js" ]
