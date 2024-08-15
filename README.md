@@ -1,5 +1,4 @@
 
-```markdown
 # Dara
 
 **Description:** ALX final project 🔥
