@@ -9,10 +9,10 @@ const generate = expressAsyncHandler(async (req, res, next) => {
   }
   try {
     const docs = await parser(req.file.path)
-    const Qs = await getSummarizeRes(docs)
-    console.log(Qs)
+    const sum = await getSummarizeRes(docs)
+    console.log(sum)
 
-    return res.status(200).json(Qs)
+    return res.status(200).json(sum)
   } catch (err) {
     return next(new ApiError(err.message, 500))
   }
