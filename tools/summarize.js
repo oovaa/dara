@@ -1,9 +1,9 @@
-import llm  from "../utils/model.js"
+import llm from '../utils/model.js'
 import { PromptTemplate } from '@langchain/core/prompts'
 import { StringOutputParser } from '@langchain/core/output_parsers'
 import { RunnableSequence } from '@langchain/core/runnables'
-import { config } from "dotenv"
-config();
+import { config } from 'dotenv'
+config()
 
 const summarize_template = `You are a friendly and helpful AI assistant. Create a concise summary of the provided information.
 {information}
@@ -21,4 +21,4 @@ async function getSummarizeRes(info) {
   return res
 }
 
-export { getSummarizeRes }
+export default getSummarizeRes
