@@ -7,7 +7,11 @@ config()
 
 const summarize_template = `You are a friendly and helpful AI assistant. Create a concise summary of the provided information.
 {information}
-Summary: `
+Summary: 
+
+#You have to summarize with the same language of the information provided.
+`
+
 
 const summarize_prompt = PromptTemplate.fromTemplate(summarize_template)
 
