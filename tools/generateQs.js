@@ -9,9 +9,10 @@ config();
 const qa_template = `You are a freindly and helpful AI assistant. Create a list of challenging, open-ended , mcq, questions based on the following infromation:
 information: {information}.
 
-Note: you should provide atleast 15 mcq, and 5 challenging/open-ended questions.
-Note: you should provide the answers of all the questions in order at the end.
-Note: respond in JSON with "questions", and "answers" keys.
+# you should provide atleast 15 mcq, and 5 challenging/open-ended questions.
+# you should provide the answers of all the questions in order at the end.
+# respond in JSON with "questions", and "answers" keys.
+# you have to generate questions with the language of the information provided.
 `
 
 const qa_prompt = PromptTemplate.fromTemplate(qa_template)
