@@ -1,7 +1,7 @@
 import express from 'express'
 import { config } from 'dotenv'
-import routes from './server/Routes/index.js'
-import globalErrorHandler from './server/Middlewares/globalErrorHandler.js'
+import routes from './server/routes/index.js'
+import globalErrorHandler from './server/middlewares/globalErrorHandler.js'
 import morgan from 'morgan'
 
 config()

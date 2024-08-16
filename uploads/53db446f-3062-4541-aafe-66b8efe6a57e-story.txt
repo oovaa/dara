@@ -1,0 +1,32 @@
+Not my story: 
+
+I worked for a while for a (now defunct) search engine company whose middleware had been written 
+by an insane person (about 5000 Java source files) who had moved on. Some of the characteristics:
+
+Most methods began with for(;;) so that continue statements could be used as gotos
+
+Almost all methods returned an object which wrapped an int, a string, a boolean and an object array, 
+so the return type could be changed later (and woe be unto any code using the return value).
+
+Classes and packages all had random names - I mean, literally, 
+the author kept a huge printout of random unique strings in his desk and crossed one off every time he had to create 
+a package or class
+
+Shutdown was accomplished by killing threads in a loop repeatedly until they were all dead - 
+like if the way you shut off your car was to open the hood and hit things with a hammer until the engine stopped
+
+All thrown runtime errors were logged as more unique random strings - to diagnose, you grepped the source code
+
+Every assignment was immediately followed by a test that the value had actually been assigned
+
+This company had a new CEO who wanted to sell this stuff to other industries than their one customer, a three-letter agency
+of the US government, and I was hired to replace this stuff with something reliable. However, they made all their money on 
+"consultants" who sat in basements in Virginia babysitting the thing and fixing things with hex editors when it corrupted
+its own data, which was a few times daily. The software being embarrassingly broken *was* their cash cow. And I learned that
+this was not unusual.
+
+So I do not wonder why Snowden had access to what he had access to, or why the first version of the Obamacare web site was a
+disaster, or why Hillary might not have wanted to use a mail system run by contractors such as this. This is the state of
+government IT.
+
+src: https://www.quora.com/What-is-the-most-absurd-code-youve-ever-seen
