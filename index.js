@@ -2,6 +2,7 @@ import { config } from 'dotenv'
 config()
 
 import express from 'express'
+import  helmet from 'helmet'
 import {engine} from 'express-handlebars'
 import compression from 'compression'
 import routes from './server/routes/index.js'
@@ -12,6 +13,7 @@ import morgan from 'morgan'
 const app = express()
 app.use(compression())
 app.use(express.json())
+app.use(helmet())
 app.engine('handlebars', engine())
 app.set('view engine', 'handlebars')
 app.set('views', './views')
