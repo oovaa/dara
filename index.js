@@ -2,18 +2,25 @@ import { config } from 'dotenv'
 config()
 
 import express from 'express'
-import  helmet from 'helmet'
+import helmet from 'helmet'
+import rateLimit from 'express-rate-limit'
 import {engine} from 'express-handlebars'
 import compression from 'compression'
 import routes from './server/routes/index.js'
 import globalErrorHandler from './server/middlewares/globalErrorHandler.js'
 import morgan from 'morgan'
 
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100 // limit each IP to 100 requests per windowMs
+})
+
 
 const app = express()
 app.use(compression())
-app.use(express.json())
 app.use(helmet())
+app.use(limiter)
+app.use(express.json())
 app.engine('handlebars', engine())
 app.set('view engine', 'handlebars')
 app.set('views', './views')
