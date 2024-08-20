@@ -1,4 +1,4 @@
-import { config } from 'dotenv'
+import {config} from 'dotenv'
 config()
 
 import express from 'express'
@@ -6,6 +6,7 @@ import helmet from 'helmet'
 import rateLimit from 'express-rate-limit'
 import {engine} from 'express-handlebars'
 import compression from 'compression'
+import cors from 'cors'
 import routes from './server/routes/index.js'
 import globalErrorHandler from './server/middlewares/globalErrorHandler.js'
 import morgan from 'morgan'
@@ -15,8 +16,13 @@ const limiter = rateLimit({
   max: 100 // limit each IP to 100 requests per windowMs
 })
 
+const corsOptions = {
+  origin: `${process.env.FRONT_DOMAIN}`,
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
 
 const app = express()
+app.use(cors(corsOptions))
 app.use(compression())
 app.use(helmet())
 app.use(limiter)
