@@ -2,9 +2,9 @@ import OpenAI from "openai";
 import fs from "fs";
 import download from "../utils/downloadVideo.js";
 
-// const openai = new OpenAI({
-//     apiKey: process.env.apiKey,
-// })
+const openai = new OpenAI({
+    apiKey: process.env.apiKey,
+})
 
 const audiototext = async (url) => {
   try {
