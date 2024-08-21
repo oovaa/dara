@@ -95,12 +95,7 @@ tools/
 	generateQs.js
 	summarize.js
 tsconfig.json
-uploads/
-	06bc5f0e-b218-45bb-8dea-0e7a9d908043-story.txt
-	53db446f-3062-4541-aafe-66b8efe6a57e-story.txt
-	574809b2-672c-45aa-a8ca-ad8bc8187d38-story.txt
-	88cb0745-96a5-4f08-9ce5-da8c11c46be2-story.txt
-	b318cee2-e5d2-4b97-9a72-28d8d101ecd5-story.txt
+
 utils/
 	model.js
 	parser.js
