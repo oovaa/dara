@@ -9,28 +9,30 @@
     "@types/bun": "latest"
   },
   "peerDependencies": {
-    "typescript": "^5.0.0"
+    "typescript": "^5.5.4"
   },
   "dependencies": {
     "@langchain/cohere": "^0.2.2",
-    "@langchain/community": "^0.2.25",
-    "@langchain/core": "^0.2.20",
-    "cohere-ai": "^7.11.2",
+    "@langchain/community": "^0.2.28",
+    "@langchain/core": "^0.2.27",
+    "cohere-ai": "^7.12.1",
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "env": "^0.0.2",
     "express": "^4.19.2",
     "express-async-handler": "^1.2.0",
+    "express-handlebars": "^8.0.1",
+    "express-rate-limit": "^7.4.0",
     "express-validator": "^7.2.0",
-    "fs": "^0.0.1-security",
-    "langchain": "^0.2.13",
+    "helmet": "^7.1.0",
+    "langchain": "^0.2.16",
     "morgan": "^1.10.0",
     "multer": "^1.4.5-lts.1",
     "nodemon": "^3.1.4",
     "officeparser": "^4.1.1",
-    "openai": "^4.56.0",
     "path": "^0.12.7",
     "pdf-parse": "^1.1.1",
-    "uuid": "^10.0.0",
-    "ytdl-core": "^4.11.5"
+    "uuid": "^10.0.0"
   }
 }
