@@ -14,12 +14,12 @@ const generate = expressAsyncHandler(async (req, res, next) => {
        const Qs = await generateQs(docs)
        console.log(Qs);
 
-       return res.status(200).json(Qs)
+       return res.status(200).json(JSON.parse(Qs, 2, null))
     } catch (err) {
        return next (
         new ApiError(err.message, 500)
-       ) 
+       )
     }
 })
 
-export default generate 
+export default generate
