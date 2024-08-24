@@ -11,27 +11,36 @@ const parser = async filePath => {
   const ext = path.extname(filePath).toLowerCase();
   let loader = '';
   let docs = '';
+  let allSlidesContent = '';
 
   switch (ext) {
     case ('.pptx'):
      loader = PPTXLoader(filePath);
      docs = await loader.load();
-     return docs[0].pageContent
+     allSlidesContent = docs.map(doc => doc.pageContent);
+    
+     return allSlidesContent;
     
     case '.pdf':
       loader = new PDFLoader(filePath);
       docs = await loader.load();
-      return docs[0].pageContent;
+      allSlidesContent = docs.map(doc => doc.pageContent);
+    
+      return allSlidesContent;
     
     case '.docx':
       loader = new DocxLoader(filePath);
       docs = await loader.load();
-      return docs[0].pageContent;
+      allSlidesContent = docs.map(doc => doc.pageContent);
+    
+      return allSlidesContent;
     
     case '.txt':
       loader = new TextLoader(filePath)
       docs = await loader.load();
-      return docs[0].pageContent;
+      allSlidesContent = docs.map(doc => doc.pageContent);
+    
+      return allSlidesContent;
     default:
       throw new Error(`Unsupported file type: ${ext}`);
   }
