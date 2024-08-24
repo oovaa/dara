@@ -6,26 +6,42 @@ import { config } from 'dotenv'
 config();
 
 
-const qa_template = `You are a freindly and helpful AI assistant. Create a list of challenging, open-ended , mcq, questions based on the following infromation:
-information: {information}.
+const qa_template = `
+## Context:
+{information}
 
-# You should provide atleast 15 mcq, and 5 challenging/open-ended questions.
-# You should provide the answers of all the questions in order at the end.
-# You have to generate questions with the language of the information provided.
-
+## Task:
+Extract At least 15 questions from the given Context and include their answers.
 ## Respond formatting:
-Respond directly with valid json Object, (not markdown)
+Respond directly with valid json Object,
+for example:
+"""
+    {{
+        "questions": [
+            {{
+                "question": "<the question here>",
+                "answer": "<the answer here>"
+}},
+            {{
+                "question": "<the question here>",
+                "answer": "<the answer here>"
+}},
+            ...
+        ]
+}}
+"""
+## Response:
 `
 
 const qa_prompt = PromptTemplate.fromTemplate(qa_template)
 
-const chain = RunnableSequence.from([qa_prompt, llm, new StringOutputParser()])
+const chain = RunnableSequence.from([qa_prompt, llm])
 
 const generateQs = async (info) => {
     const response = await chain.invoke({
     information: info
     })
-    return response
+    return response.content.replaceAll("```json","").replaceAll("```","")
 }
 
 export default generateQs

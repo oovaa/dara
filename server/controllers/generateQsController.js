@@ -12,8 +12,8 @@ const generate = expressAsyncHandler(async (req, res, next) => {
     }
     try {
         const filePath = tempWrite.sync(req.file.buffer, req.file.originalname)
-       const docs = await parser(filePath)
-       const Qs = await generateQs(docs)
+        const docs = await parser(filePath)
+        const Qs = await generateQs(docs)
        return res.status(200).json(JSON.parse(Qs, 2, null))
     } catch (err) {
        return next (
