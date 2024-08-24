@@ -12,7 +12,6 @@
     "typescript": "^5.5.4"
   },
   "dependencies": {
-    "@deepgram/sdk": "^3.5.1",
     "@langchain/cohere": "^0.2.2",
     "@langchain/community": "^0.2.28",
     "@langchain/core": "^0.2.27",
@@ -34,6 +33,7 @@
     "officeparser": "^4.1.1",
     "path": "^0.12.7",
     "pdf-parse": "^1.1.1",
+    "temp-write": "^6.0.0",
     "uuid": "^10.0.0"
   }
 }
