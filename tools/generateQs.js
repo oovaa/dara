@@ -41,7 +41,7 @@ const generateQs = async (info) => {
     const response = await chain.invoke({
     information: info
     })
-    return response.content.replaceAll("```json","").replaceAll("```","")
+    return response.content.replaceAll('```json', '').replaceAll('```', '').replaceAll('"""', '')
 }
 
 export default generateQs
