@@ -11,9 +11,6 @@ const generate = expressAsyncHandler(async (req, res, next) => {
   try {
     const filePath = tempWrite.sync(req.file.buffer, req.file.originalname);
     const docs = await parser(filePath);
-    if (!docs) {
-      return next(new ApiError("no docs", 404));
-    }
 
     const Qs = await generateQs(docs);
     const qs_json = JSON.parse(JSON.stringify(Qs));
