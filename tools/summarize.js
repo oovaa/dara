@@ -5,13 +5,13 @@ import { RunnableSequence } from '@langchain/core/runnables'
 import { config } from 'dotenv'
 config()
 
-const summarize_template = `You are a friendly and helpful AI assistant. Create a concise summary of the provided information.
+const summarize_template = `You are a friendly and helpful AI assistant. Create a detailed summary of every section of the provided information. 
 {information}
 Summary: 
 
-#You have to summarize with the same language of the information provided.
-`
-
+#Sections are the one under a header.
+#If the section contains a rule or a princple, make sure to include it in its summary.
+#You have to summarize with the same language of the information provided.`
 
 const summarize_prompt = PromptTemplate.fromTemplate(summarize_template)
 

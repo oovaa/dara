@@ -1,4 +1,4 @@
-import { parser } from '../../utils/parser.js'
+import {parser} from '../../utils/parser.js'
 import tempWrite from 'temp-write'
 import expressAsyncHandler from 'express-async-handler'
 import ApiError from '../utils/ApiError.js'

@@ -1,15 +1,18 @@
 import OpenAI from "openai";
 import fs from "fs";
 import download from "../utils/downloadVideo.js";
+import { config } from "dotenv";
+
+config();
 
 const openai = new OpenAI({
-    apiKey: process.env.apiKey,
+    apiKey: process.env.key,
 })
 
 const audiototext = async (url) => {
   try {
     const video = await download(url);
-       const transcriptions = openai.audio.transcriptions.create({
+       const transcriptions = await openai.audio.transcriptions.create({
         file: video,
         model: "whisper-1",
        });

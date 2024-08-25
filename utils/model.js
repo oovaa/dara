@@ -8,7 +8,7 @@ const llm = new ChatCohere({
     apiKey,
     outputFormat: 'json',
     model: 'command-r-plus',
-    temperature: 0,
+    temperature: 0.3,
     maxRetries: 2
 });
 
