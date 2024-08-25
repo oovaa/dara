@@ -13,7 +13,7 @@ const generate = expressAsyncHandler(async (req, res, next) => {
     const docs = await parser(filePath);
 
     const Qs = await generateQs(docs);
-    const qs_json = JSON.parse(JSON.stringify(Qs));
+    const qs_json = JSON.parse(Qs);
 
     return res.status(200).json(qs_json);
   } catch (err) {
