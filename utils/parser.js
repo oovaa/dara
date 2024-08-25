@@ -3,7 +3,6 @@ import {PDFLoader} from '@langchain/community/document_loaders/fs/pdf'
 import { DocxLoader } from "@langchain/community/document_loaders/fs/docx";
 import { PPTXLoader } from "@langchain/community/document_loaders/fs/pptx";
 import pdf from 'pdf-parse-debugging-disabled';
-
 import fs from 'fs';
 import path from 'path';
 import { config } from "dotenv";
