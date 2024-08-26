@@ -1,24 +1,24 @@
-import generateQs from "../../tools/generateQs.js";
-import { parser } from "../../utils/parser.js";
-import tempWrite from "temp-write";
-import expressAsyncHandler from "express-async-handler";
-import ApiError from "../utils/ApiError.js";
+import generateQs from '../../tools/generateQs.js'
+import { parser } from '../../utils/parser.js'
+import tempWrite from 'temp-write'
+import expressAsyncHandler from 'express-async-handler'
+import ApiError from '../utils/ApiError.js'
 
 const generate = expressAsyncHandler(async (req, res, next) => {
   if (!req.file) {
-    next(new ApiError("you must provide a file", 400));
+    next(new ApiError('you must provide a file', 400))
   }
   try {
-    const filePath = tempWrite.sync(req.file.buffer, req.file.originalname);
-    const docs = await parser(filePath);
+    const filePath = tempWrite.sync(req.file.buffer, req.file.originalname)
+    const docs = await parser(filePath)
 
-    const Qs = await generateQs(docs);
-    const qs_json = JSON.parse(Qs);
+    const Qs = await generateQs(docs)
+    const qs_json = JSON.parse(Qs)
 
-    return res.status(200).json(qs_json);
+    return res.status(200).json(qs_json)
   } catch (err) {
-    return next(new ApiError(err.message, 500));
+    return next(new ApiError(err.message, 500))
   }
-});
+})
 
-export default generate;
+export default generate

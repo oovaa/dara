@@ -1,14 +1,14 @@
 import dotenv from 'dotenv'
 dotenv.config()
-import {RedisChatMessageHistory} from '@langchain/community/stores/message/ioredis'
+import { RedisChatMessageHistory } from '@langchain/community/stores/message/ioredis'
 import { BufferMemory } from 'langchain/memory'
-import {ChatPromptTemplate, MessagesPlaceholder} from '@langchain/core/prompts'
+import { ChatPromptTemplate, MessagesPlaceholder } from '@langchain/core/prompts'
 import { formatToOpenAITool } from 'langchain/tools'
-import {RunnableSequence} from '@langchain/core/runnables'
+import { RunnableSequence } from '@langchain/core/runnables'
 import { AgentExecutor } from 'langchain/agents'
-import {ChatOpenAI} from '@langchain/openai'
-import {formatToOpenAIToolMessages} from 'langchain/agents/format_scratchpad/openai_tools'
-import {OpenAIToolsAgentOutputParser} from 'langchain/agents/openai/output_parser'
+import { ChatOpenAI } from '@langchain/openai'
+import { formatToOpenAIToolMessages } from 'langchain/agents/format_scratchpad/openai_tools'
+import { OpenAIToolsAgentOutputParser } from 'langchain/agents/openai/output_parser'
 
 const model = new ChatOpenAI({
   temperature: 0.6,
@@ -42,7 +42,7 @@ let memory = mkMemory()
 
 const prompt = ChatPromptTemplate.fromMessages([
   ['ai', sysPrompt],
-  new MessagesPlaceholder("chat_history"),
+  new MessagesPlaceholder('chat_history'),
   ['human', '{input}'],
   new MessagesPlaceholder('agent_scratchpad')
 ])
@@ -64,10 +64,9 @@ const runnableAgent = RunnableSequence.from([
 
 const executor = AgentExecutor.fromAgentAndTools({
   agent: runnableAgent,
-  tools,
+  tools
   //verbose:true
 })
-
 
 const answerQuestion = async (question, session) => {
   memory = mkMemory(session)

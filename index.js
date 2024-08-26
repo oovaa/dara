@@ -1,10 +1,10 @@
-import {config} from 'dotenv'
+import { config } from 'dotenv'
 config()
 
 import express from 'express'
 import helmet from 'helmet'
 import rateLimit from 'express-rate-limit'
-import {engine} from 'express-handlebars'
+import { engine } from 'express-handlebars'
 import compression from 'compression'
 import cors from 'cors'
 import routes from './server/routes/index.js'
@@ -34,7 +34,7 @@ app.use('/api', routes)
 app.use(globalErrorHandler)
 app.use(morgan('dev'))
 app.get('/', (req, res) => {
-  res.render('home', {DARAFRONT: process.env.FRONT_DOMAIN})
+  res.render('home', { DARAFRONT: process.env.FRONT_DOMAIN })
 })
 const PORT = process.env.PORT || 3000
 

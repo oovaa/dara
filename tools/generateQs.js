@@ -1,10 +1,9 @@
-import  llm  from '../utils/model.js'
+import llm from '../utils/model.js'
 import { PromptTemplate } from '@langchain/core/prompts'
 import { StringOutputParser } from '@langchain/core/output_parsers'
 import { RunnableSequence } from '@langchain/core/runnables'
 import { config } from 'dotenv'
-config();
-
+config()
 
 const qa_template = `
 ## Context:
@@ -38,10 +37,10 @@ const qa_prompt = PromptTemplate.fromTemplate(qa_template)
 const chain = RunnableSequence.from([qa_prompt, llm])
 
 const generateQs = async (info) => {
-    const response = await chain.invoke({
+  const response = await chain.invoke({
     information: info
-    })
-    return response.content.replaceAll('```json', '').replaceAll('```', '').replaceAll('"""', '')
+  })
+  return response.content.replaceAll('```json', '').replaceAll('```', '').replaceAll('"""', '')
 }
 
 export default generateQs

@@ -1,62 +1,62 @@
-import { TextLoader } from "langchain/document_loaders/fs/text";
-import { PDFLoader } from "@langchain/community/document_loaders/fs/pdf";
-import { DocxLoader } from "@langchain/community/document_loaders/fs/docx";
-import { PPTXLoader } from "@langchain/community/document_loaders/fs/pptx";
-import path from "path";
-import { config } from "dotenv";
-config();
+import { TextLoader } from 'langchain/document_loaders/fs/text'
+import { PDFLoader } from '@langchain/community/document_loaders/fs/pdf'
+import { DocxLoader } from '@langchain/community/document_loaders/fs/docx'
+import { PPTXLoader } from '@langchain/community/document_loaders/fs/pptx'
+import path from 'path'
+import { config } from 'dotenv'
+config()
 
 const parser = async (filePath) => {
-  const ext = path.extname(filePath).toLowerCase();
-  let loader = "";
-  let docs = "";
-  let allSlidesContent = "";
+  const ext = path.extname(filePath).toLowerCase()
+  let loader = ''
+  let docs = ''
+  let allSlidesContent = ''
 
   switch (ext) {
-    case ".pptx":
+    case '.pptx':
       try {
-        loader = new PPTXLoader(filePath);
-        docs = await loader.load();
-        allSlidesContent = docs.map((doc) => doc.pageContent);
+        loader = new PPTXLoader(filePath)
+        docs = await loader.load()
+        allSlidesContent = docs.map((doc) => doc.pageContent)
 
-        return allSlidesContent;
+        return allSlidesContent
       } catch (err) {
-        throw new Error(err.message);
+        throw new Error(err.message)
       }
 
-    case ".pdf":
+    case '.pdf':
       try {
-        loader = new PDFLoader(filePath);
-        docs = await loader.load();
-        allSlidesContent = docs.map((doc) => doc.pageContent);
+        loader = new PDFLoader(filePath)
+        docs = await loader.load()
+        allSlidesContent = docs.map((doc) => doc.pageContent)
 
-        return allSlidesContent;
+        return allSlidesContent
       } catch (err) {
-        throw new Error(err.message);
+        throw new Error(err.message)
       }
-    case ".docx":
+    case '.docx':
       try {
-        loader = new DocxLoader(filePath);
-        docs = await loader.load();
-        allSlidesContent = docs.map((doc) => doc.pageContent);
+        loader = new DocxLoader(filePath)
+        docs = await loader.load()
+        allSlidesContent = docs.map((doc) => doc.pageContent)
 
-        return allSlidesContent;
+        return allSlidesContent
       } catch (err) {
-        throw new Error(err.message);
+        throw new Error(err.message)
       }
-    case ".txt":
+    case '.txt':
       try {
-        loader = new TextLoaderLoader(filePath);
-        docs = await loader.load();
-        allSlidesContent = docs.map((doc) => doc.pageContent);
+        loader = new TextLoaderLoader(filePath)
+        docs = await loader.load()
+        allSlidesContent = docs.map((doc) => doc.pageContent)
 
-        return allSlidesContent;
+        return allSlidesContent
       } catch (err) {
-        throw new Error(err.message);
+        throw new Error(err.message)
       }
     default:
-      throw new Error(`Unsupported file type: ${ext}`);
+      throw new Error(`Unsupported file type: ${ext}`)
   }
-};
+}
 
-export { parser };
+export { parser }

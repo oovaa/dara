@@ -1,4 +1,4 @@
-import {parser} from '../../utils/parser.js'
+import { parser } from '../../utils/parser.js'
 import tempWrite from 'temp-write'
 import expressAsyncHandler from 'express-async-handler'
 import ApiError from '../utils/ApiError.js'
@@ -12,7 +12,7 @@ const generate = expressAsyncHandler(async (req, res, next) => {
     const filePath = tempWrite.sync(req.file.buffer, req.file.originalname)
     const docs = await parser(filePath)
     const sum = await getSummarizeRes(docs)
-    return res.status(200).json({result: sum})
+    return res.status(200).json({ result: sum })
   } catch (err) {
     return next(new ApiError(err.message, 500))
   }

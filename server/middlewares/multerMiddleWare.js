@@ -13,7 +13,7 @@ const storage = multer.memoryStorage({
 })
 
 const upload = multer({
-    storage,
+  storage
 }).single('file')
 
-export default  upload
+export default upload
