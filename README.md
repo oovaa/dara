@@ -20,16 +20,17 @@
 
 ## 🎯 Overview
 
-Dara is a modern, AI-powered document processing platform developed as part of the ALX Software Engineering program. It leverages cutting-edge technologies like LangChain and Cohere AI to provide intelligent document analysis, summarization, and question generation capabilities.
+Dara is a modern, AI-powered document processing platform developed as part of the ALX Software Engineering program. It leverages cutting-edge technologies like LangChain and Cohere AI to provide intelligent document analysis, summarization, question generation, and conversational AI capabilities - all using free and open-source alternatives.
 
 ### 🌟 Key Highlights
 
-- **🤖 AI-Powered**: Advanced language models for intelligent text analysis
+- **🤖 AI-Powered**: Advanced language models using entirely free alternatives (Cohere AI)
 - **📄 Multi-Format Support**: Process PDF, DOCX, PPTX, and TXT files seamlessly
 - **🔄 RESTful API**: Clean, well-documented API endpoints
 - **🛡️ Enterprise-Ready**: Built-in security, rate limiting, and error handling
 - **🚀 Scalable Architecture**: Modular design for easy deployment and scaling
 - **📊 Production-Ready**: Comprehensive monitoring, logging, and deployment options
+- **💰 Cost-Effective**: Uses free AI services with no usage-based billing
 
 ## ✨ Features
 
@@ -39,10 +40,12 @@ Dara is a modern, AI-powered document processing platform developed as part of t
 - **Content Validation**: Robust file type and size validation
 
 ### 🧠 AI-Powered Analysis  
-- **Smart Summarization**: Generate concise, contextual summaries
+- **Smart Summarization**: Generate concise, contextual summaries using Cohere AI
 - **Question Generation**: Create relevant questions from document content
+- **Conversational AI**: Interactive chat interface for document Q&A powered by Cohere
 - **Answer Generation**: Provide AI-powered answers based on document context
 - **Confidence Scoring**: Quality metrics for AI-generated content
+- **Memory Management**: Persistent conversation history with Redis
 
 ### 🔒 Security & Performance
 - **Rate Limiting**: Intelligent request throttling (100 req/15min)
@@ -162,13 +165,23 @@ curl -X POST http://localhost:3000/api/qs \
 }
 ```
 
-#### 💡 Answer Generation
-Get AI-powered answers to specific questions about your documents.
+#### 💬 Conversational Chat
+Engage with Dara's AI assistant for interactive conversations.
 
 ```bash
-curl -X POST http://localhost:3000/api/answer \
-  -F 'file=@document.docx' \
-  -F 'question=What is the main conclusion?'
+curl -X POST http://localhost:3000/api/chat \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "question": "What is artificial intelligence?",
+    "session": "user-session-123"
+  }'
+```
+
+**Response**:
+```json
+{
+  "answer": "Artificial intelligence (AI) is a field of computer science that aims to create systems capable of performing tasks that typically require human intelligence..."
+}
 ```
 
 ### Supported File Formats

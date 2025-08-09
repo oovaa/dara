@@ -204,6 +204,21 @@ DATABASE_URL=mongodb://localhost:27017/dara
 - **Description**: Morgan logging format
 - **Example**: `LOG_FORMAT=dev`
 
+### Cache Configuration (Optional)
+
+#### `REDIS_URL`
+- **Type**: String (URL)
+- **Default**: None (agent memory disabled if not provided)
+- **Description**: Redis connection URL for conversational agent memory persistence
+- **Example**: `REDIS_URL=redis://localhost:6379`
+- **Note**: Required for chat memory features in the conversational agent
+
+#### `CACHE_TTL`
+- **Type**: Number (seconds)
+- **Default**: `3600` (1 hour)
+- **Description**: Time-to-live for cached responses and chat sessions
+- **Example**: `CACHE_TTL=7200` (2 hours)
+
 ## 🌍 Environment-Specific Configurations
 
 ### Development Environment

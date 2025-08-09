@@ -149,47 +149,55 @@ curl -X POST \
 }
 ```
 
-### 3. Answer Questions
+### 3. Conversational Chat
 
-Get AI-generated answers for questions based on document content.
+Engage in conversational AI with persistent session memory using Cohere AI.
 
 #### Endpoint
 ```http
-POST /api/answer
+POST /api/chat
 ```
 
 #### Request
-**Content-Type**: `multipart/form-data`
+**Content-Type**: `application/json`
 
 **Parameters**:
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
-| `file` | File | Yes | Document file for context |
-| `question` | String | Yes | Question to answer |
+| `question` | String | Yes | User's question or message |
+| `session` | String | Yes | Unique session identifier for conversation continuity |
 
 **Example Request**:
 ```bash
 curl -X POST \
-  http://localhost:3000/api/answer \
-  -H 'Content-Type: multipart/form-data' \
-  -F 'file=@/path/to/document.docx' \
-  -F 'question=What is the main topic of this document?'
+  http://localhost:3000/api/chat \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "question": "What is artificial intelligence?",
+    "session": "user-session-123"
+  }'
 ```
 
 #### Response
 **Success Response (200 OK)**:
 ```json
 {
-  "success": true,
-  "data": {
-    "question": "What is the main topic of this document?",
-    "answer": "The main topic of this document is the implementation of artificial intelligence in modern business processes and its impact on operational efficiency.",
-    "confidence": 0.92,
-    "filename": "document.docx",
-    "processedAt": "2024-01-15T10:40:00Z"
+  "answer": "Artificial intelligence (AI) is a field of computer science that aims to create systems capable of performing tasks that typically require human intelligence..."
+}
+```
+
+**Error Response (400 Bad Request)**:
+```json
+{
+  "success": false,
+  "error": {
+    "message": "Bad Request",
+    "code": 400
   }
 }
 ```
+
+**Note**: This endpoint requires Redis to be configured for session memory persistence. If Redis is not available, sessions will not persist between requests.
 
 ## 🚨 Error Handling
 
