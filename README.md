@@ -1,144 +1,396 @@
 # Dara
 
-**Description:** ALX final project 🔥
+<div align="center">
 
-## Table of Contents
-- [Introduction](#introduction)
-- [Features](#features)
-- [Installation](#installation)
-- [Usage](#usage)
-  - [Endpoints](#endpoints)
-- [Project Structure](#project-structure)
-- [Contributing](#contributing)
-- [License](#license)
+![Dara Logo](https://img.shields.io/badge/Dara-AI%20Document%20Processor-blue?style=for-the-badge)
 
-## Introduction
-Dara is a project developed as part of the ALX program. It provides functionalities for file parsing, summary generation, and question generation from various document types.
+[![License](https://img.shields.io/badge/license-GPL%20v3.0-green.svg)](LICENSE)
+[![Node.js](https://img.shields.io/badge/node.js-v20+-brightgreen.svg)](https://nodejs.org/)
+[![Express](https://img.shields.io/badge/express-v4.21+-orange.svg)](https://expressjs.com/)
+[![LangChain](https://img.shields.io/badge/langchain-v0.2+-purple.svg)](https://langchain.readthedocs.io/)
+[![Cohere](https://img.shields.io/badge/cohere-AI%20Powered-blueviolet.svg)](https://cohere.ai/)
 
-## Features
-- **File Parsing:** Supports `.pptx`, `.pdf`, `.docx`, and `.txt` file formats.
-- **Summary Generation:** Generates summaries from the content of the supported document types.
-- **Question Generation:** Generates questions from the content of the supported document types.
+**An intelligent document processing platform powered by AI**
 
-## Installation
-To get started with Dara, follow these steps:
+[📖 Documentation](docs/) • [🚀 Quick Start](#quick-start) • [🔧 API Reference](docs/api/API.md) • [🤝 Contributing](CONTRIBUTING.md)
 
-1. Clone the repository:
+</div>
+
+---
+
+## 🎯 Overview
+
+Dara is a modern, AI-powered document processing platform developed as part of the ALX Software Engineering program. It leverages cutting-edge technologies like LangChain and Cohere AI to provide intelligent document analysis, summarization, and question generation capabilities.
+
+### 🌟 Key Highlights
+
+- **🤖 AI-Powered**: Advanced language models for intelligent text analysis
+- **📄 Multi-Format Support**: Process PDF, DOCX, PPTX, and TXT files seamlessly
+- **🔄 RESTful API**: Clean, well-documented API endpoints
+- **🛡️ Enterprise-Ready**: Built-in security, rate limiting, and error handling
+- **🚀 Scalable Architecture**: Modular design for easy deployment and scaling
+- **📊 Production-Ready**: Comprehensive monitoring, logging, and deployment options
+
+## ✨ Features
+
+### 📝 Document Processing
+- **Multi-Format Parser**: Native support for `.pdf`, `.docx`, `.pptx`, and `.txt` files
+- **Intelligent Text Extraction**: Advanced parsing with context preservation
+- **Content Validation**: Robust file type and size validation
+
+### 🧠 AI-Powered Analysis  
+- **Smart Summarization**: Generate concise, contextual summaries
+- **Question Generation**: Create relevant questions from document content
+- **Answer Generation**: Provide AI-powered answers based on document context
+- **Confidence Scoring**: Quality metrics for AI-generated content
+
+### 🔒 Security & Performance
+- **Rate Limiting**: Intelligent request throttling (100 req/15min)
+- **Security Headers**: Comprehensive protection with Helmet.js
+- **CORS Protection**: Configurable cross-origin resource sharing
+- **Input Validation**: Robust validation for all endpoints
+- **Error Handling**: Graceful error responses and logging
+
+## 🚀 Quick Start
+
+### Prerequisites
+- **Node.js** v20.0.0 or higher
+- **npm** v10.0.0 or higher  
+- **Cohere AI API Key** ([Get one here](https://cohere.ai/))
+
+### Installation
+
+1. **Clone the repository**:
    ```bash
    git clone https://github.com/oovaa/dara.git
    cd dara
    ```
 
-2. Install the dependencies:
+2. **Install dependencies**:
    ```bash
    npm install
    ```
 
-3. Set up environment variables:
-   Create a `.env` file in the root directory and add the necessary environment variables.
+3. **Configure environment**:
+   ```bash
+   # Create environment file
+   cp .env.example .env
+   
+   # Edit with your configuration
+   nano .env
+   ```
 
-## Usage
-To use Dara, you can use the following commands:
+   **Required environment variables**:
+   ```env
+   # AI Service Configuration
+   API_KEY=your_cohere_api_key_here
+   
+   # Server Configuration
+   PORT=3000
+   FRONT_DOMAIN=http://localhost:3000
+   
+   # File Upload Configuration
+   MAX_FILE_SIZE=10485760  # 10MB
+   ```
 
-- **Start the server:**
-  ```bash
-  npm start
-  ```
+4. **Start the application**:
+   ```bash
+   # Development mode (with hot reload)
+   npm run dev
+   
+   # Production mode
+   npm start
+   ```
 
-### Endpoints
-- **Generate Summary:**
-  - **URL:** `/api/sum`
-  - **Method:** `POST`
-  - **Description:** Upload a file to generate a summary.
-  - **Example:**
-    ```bash
-    curl -X POST -F 'file=@path/to/your/file.pdf' http://localhost:3000/api/sum
-    ```
+5. **Verify installation**:
+   ```bash
+   curl http://localhost:3000/
+   ```
 
-- **Generate Questions:**
-  - **URL:** `/api/qs`
-  - **Method:** `POST`
-  - **Description:** Upload a file to generate questions.
-  - **Example:**
-    ```bash
-    curl -X POST -F 'file=@path/to/your/file.pdf' http://localhost:3000/api/qs
-    ```
+   You should see the Dara welcome page! 🎉
 
-## Project Structure
-Here is a detailed description of the project structure:
+## 🔧 Usage
 
-```
-.gitignore
-bun.lockb
-Dockerfile
-index.js
-LICENSE
-package.json
-README.md
-server/
-	controllers/
-		generateQsController.js
-		generateSummaryController.js
-	middlewares/
-		multerMiddleWare.js
-		globalErrorHandler.js
-	routes/
-		generateQsRoute.js
-		generateSummaryRoute.js
-		index.js
-	utils/
-		ApiError.js
-story.txt
-test/
-	chaint_test.js
-tools/
-	generateQs.js
-	summarize.js
-tsconfig.json
+### Web Interface
+Navigate to `http://localhost:3000` to access the intuitive web interface for document upload and processing.
 
-utils/
-	model.js
-	parser.js
+### API Endpoints
+
+#### 📄 Document Summarization
+Generate intelligent summaries from uploaded documents.
+
+```bash
+curl -X POST http://localhost:3000/api/sum \
+  -F 'file=@document.pdf'
 ```
 
-### Root Files
-- **.gitignore**: Specifies files and directories that should be ignored by Git.
-- **bun.lockb**: Lock file for Bun package manager.
-- **Dockerfile**: Contains instructions to build a Docker image for the project.
-- **index.js**: Entry point of the application.
-- **LICENSE**: License file for the project.
-- **package.json**: Contains metadata about the project and its dependencies.
-- **README.md**: This file, providing an overview of the project.
+**Response**:
+```json
+{
+  "success": true,
+  "data": {
+    "summary": "This document discusses...",
+    "filename": "document.pdf",
+    "processingTime": 3.2
+  }
+}
+```
 
-### Directories
-- **server/**: Contains the server-side code.
-  - **controllers/**: Contains controller files that handle requests and responses.
-    - **[`generateQsController.js`](command:_github.copilot.openSymbolInFile?%5B%7B%22scheme%22%3A%22file%22%2C%22authority%22%3A%22%22%2C%22path%22%3A%22%2Fhome%2Fomar%2Frepos%2Fdara%2Fserver%2Fcontrollers%2FgenerateQsController.js%22%2C%22query%22%3A%22%22%2C%22fragment%22%3A%22%22%7D%2C%22generateQsController.js%22%5D "/home/omar/repos/dara/server/controllers/generateQsController.js")**: Handles requests for generating questions.
-    - **[`generateSummaryController.js`](command:_github.copilot.openSymbolInFile?%5B%7B%22scheme%22%3A%22file%22%2C%22authority%22%3A%22%22%2C%22path%22%3A%22%2Fhome%2Fomar%2Frepos%2Fdara%2Fserver%2Fcontrollers%2FgenerateSummaryController.js%22%2C%22query%22%3A%22%22%2C%22fragment%22%3A%22%22%7D%2C%22generateSummaryController.js%22%5D "/home/omar/repos/dara/server/controllers/generateSummaryController.js")**: Handles requests for generating summaries.
-  - **middlewares/**: Contains middleware functions.
-    - **[`multerMiddleWare.js`](command:_github.copilot.openSymbolInFile?%5B%7B%22scheme%22%3A%22file%22%2C%22authority%22%3A%22%22%2C%22path%22%3A%22%2Fhome%2Fomar%2Frepos%2Fdara%2Fserver%2Fmiddlewares%2FmulterMiddleWare.js%22%2C%22query%22%3A%22%22%2C%22fragment%22%3A%22%22%7D%2C%22multerMiddleWare.js%22%5D "/home/omar/repos/dara/server/middlewares/multerMiddleWare.js")**: Middleware for handling file uploads.
-    - **[`globalErrorHandler.js`](command:_github.copilot.openSymbolInFile?%5B%7B%22scheme%22%3A%22file%22%2C%22authority%22%3A%22%22%2C%22path%22%3A%22%2Fhome%2Fomar%2Frepos%2Fdara%2Fserver%2Fmiddlewares%2FglobalErrorHandler.js%22%2C%22query%22%3A%22%22%2C%22fragment%22%3A%22%22%7D%2C%22globalErrorHandler.js%22%5D "/home/omar/repos/dara/server/middlewares/globalErrorHandler.js")**: Middleware for handling global errors.
-  - **routes/**: Contains route definitions.
-    - **[`generateQsRoute.js`](command:_github.copilot.openSymbolInFile?%5B%7B%22scheme%22%3A%22file%22%2C%22authority%22%3A%22%22%2C%22path%22%3A%22%2Fhome%2Fomar%2Frepos%2Fdara%2Fserver%2Froutes%2FgenerateQsRoute.js%22%2C%22query%22%3A%22%22%2C%22fragment%22%3A%22%22%7D%2C%22generateQsRoute.js%22%5D "/home/omar/repos/dara/server/routes/generateQsRoute.js")**: Route for generating questions.
-    - **[`generateSummaryRoute.js`](command:_github.copilot.openSymbolInFile?%5B%7B%22scheme%22%3A%22file%22%2C%22authority%22%3A%22%22%2C%22path%22%3A%22%2Fhome%2Fomar%2Frepos%2Fdara%2Fserver%2Froutes%2FgenerateSummaryRoute.js%22%2C%22query%22%3A%22%22%2C%22fragment%22%3A%22%22%7D%2C%22generateSummaryRoute.js%22%5D "/home/omar/repos/dara/server/routes/generateSummaryRoute.js")**: Route for generating summaries.
-    - **[`index.js`](command:_github.copilot.openSymbolInFile?%5B%7B%22scheme%22%3A%22file%22%2C%22authority%22%3A%22%22%2C%22path%22%3A%22%2Fhome%2Fomar%2Frepos%2Fdara%2Fserver%2Froutes%2Findex.js%22%2C%22query%22%3A%22%22%2C%22fragment%22%3A%22%22%7D%2C%22index.js%22%5D "/home/omar/repos/dara/server/routes/index.js")**: Main router that combines all routes.
-  - **utils/**: Contains utility functions and classes.
-    - **[`ApiError.js`](command:_github.copilot.openSymbolInFile?%5B%7B%22scheme%22%3A%22file%22%2C%22authority%22%3A%22%22%2C%22path%22%3A%22%2Fhome%2Fomar%2Frepos%2Fdara%2Fserver%2Futils%2FApiError.js%22%2C%22query%22%3A%22%22%2C%22fragment%22%3A%22%22%7D%2C%22ApiError.js%22%5D "/home/omar/repos/dara/server/utils/ApiError.js")**: Custom error class for API errors.
-- **story.txt**: Example text file used for testing.
-- **test/**: Contains test files.
-  - **[`chaint_test.js`](command:_github.copilot.openSymbolInFile?%5B%7B%22scheme%22%3A%22file%22%2C%22authority%22%3A%22%22%2C%22path%22%3A%22%2Fhome%2Fomar%2Frepos%2Fdara%2Ftest%2Fchaint_test.js%22%2C%22query%22%3A%22%22%2C%22fragment%22%3A%22%22%7D%2C%22chaint_test.js%22%5D "/home/omar/repos/dara/test/chaint_test.js")**: Contains unit tests for the application.
-- **tools/**: Contains scripts for generating summaries and questions.
-  - **[`generateQs.js`](command:_github.copilot.openSymbolInFile?%5B%7B%22scheme%22%3A%22file%22%2C%22authority%22%3A%22%22%2C%22path%22%3A%22%2Fhome%2Fomar%2Frepos%2Fdara%2Ftools%2FgenerateQs.js%22%2C%22query%22%3A%22%22%2C%22fragment%22%3A%22%22%7D%2C%22generateQs.js%22%5D "/home/omar/repos/dara/tools/generateQs.js")**: Script for generating questions from parsed documents.
-  - **[`summarize.js`](command:_github.copilot.openSymbolInFile?%5B%7B%22scheme%22%3A%22file%22%2C%22authority%22%3A%22%22%2C%22path%22%3A%22%2Fhome%2Fomar%2Frepos%2Fdara%2Ftools%2Fsummarize.js%22%2C%22query%22%3A%22%22%2C%22fragment%22%3A%22%22%7D%2C%22summarize.js%22%5D "/home/omar/repos/dara/tools/summarize.js")**: Script for generating summaries from parsed documents.
-- **tsconfig.json**: Configuration file for TypeScript.
-- **uploads/**: Directory for storing uploaded files.
-- **utils/**: Contains utility functions and classes.
-  - **[`model.js`](command:_github.copilot.openSymbolInFile?%5B%7B%22scheme%22%3A%22file%22%2C%22authority%22%3A%22%22%2C%22path%22%3A%22%2Fhome%2Fomar%2Frepos%2Fdara%2Futils%2Fmodel.js%22%2C%22query%22%3A%22%22%2C%22fragment%22%3A%22%22%7D%2C%22model.js%22%5D "/home/omar/repos/dara/utils/model.js")**: Contains the model used for generating summaries and questions.
-  - **[`parser.js`](command:_github.copilot.openSymbolInFile?%5B%7B%22scheme%22%3A%22file%22%2C%22authority%22%3A%22%22%2C%22path%22%3A%22%2Fhome%2Fomar%2Frepos%2Fdara%2Futils%2Fparser.js%22%2C%22query%22%3A%22%22%2C%22fragment%22%3A%22%22%7D%2C%22parser.js%22%5D "/home/omar/repos/dara/utils/parser.js")**: Contains the parser for extracting text from documents.
+#### ❓ Question Generation
+Create relevant questions based on document content.
 
-## Contributing
-Contributions are welcome! Please read CONTRIBUTING.md for details on our code of conduct and the process for submitting pull requests.
+```bash
+curl -X POST http://localhost:3000/api/qs \
+  -F 'file=@presentation.pptx'
+```
 
-## License
-This project is licensed under the GNU General Public License v3.0 - see the [`LICENSE`](command:_github.copilot.openRelativePath?%5B%7B%22scheme%22%3A%22file%22%2C%22authority%22%3A%22%22%2C%22path%22%3A%22%2Fhome%2Fomar%2Frepos%2Fdara%2FLICENSE%22%2C%22query%22%3A%22%22%2C%22fragment%22%3A%22%22%7D%5D "/home/omar/repos/dara/LICENSE") file for details.
+**Response**:
+```json
+{
+  "success": true,
+  "data": {
+    "questions": [
+      {
+        "id": 1,
+        "question": "What are the main topics covered?",
+        "type": "factual",
+        "difficulty": "easy"
+      }
+    ],
+    "questionCount": 5
+  }
+}
+```
+
+#### 💡 Answer Generation
+Get AI-powered answers to specific questions about your documents.
+
+```bash
+curl -X POST http://localhost:3000/api/answer \
+  -F 'file=@document.docx' \
+  -F 'question=What is the main conclusion?'
+```
+
+### Supported File Formats
+
+| Format | Extension | Description |
+|--------|-----------|-------------|
+| **PDF** | `.pdf` | Portable Document Format |
+| **Word** | `.docx` | Microsoft Word documents |
+| **PowerPoint** | `.pptx` | Microsoft PowerPoint presentations |
+| **Text** | `.txt` | Plain text files |
+
+### Rate Limits
+- **100 requests** per 15-minute window per IP address
+- **10MB** maximum file size
+- **50,000 characters** maximum document length
+
+## 🏗️ Architecture
+
+Dara follows a modern, scalable architecture built on proven technologies:
+
+```
+┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
+│   Frontend      │    │   Backend       │    │   AI Services   │
+│   (Handlebars)  │◄──►│   (Express.js)  │◄──►│   (Cohere AI)   │
+│                 │    │                 │    │                 │
+└─────────────────┘    └─────────────────┘    └─────────────────┘
+                               │
+                               ▼
+                       ┌─────────────────┐
+                       │   File System   │
+                       │   (Processing)  │
+                       └─────────────────┘
+```
+
+### 🔧 Technology Stack
+
+| Layer | Technologies |
+|-------|-------------|
+| **Backend** | Node.js, Express.js, ES6 Modules |
+| **AI/ML** | LangChain, Cohere AI, Document Loaders |
+| **Security** | Helmet.js, CORS, Rate Limiting, Input Validation |
+| **File Processing** | Multer, PDF-Parse, Office Parser |
+| **Development** | Nodemon, Prettier, PM2 |
+| **Deployment** | Docker, PM2, Nginx |
+
+### 📁 Project Structure
+
+```
+dara/
+├── 📂 server/              # Backend application
+│   ├── 🎮 controllers/     # Request handlers
+│   ├── 🔧 middlewares/     # Express middlewares  
+│   ├── 🛣️  routes/         # API route definitions
+│   └── 🔨 utils/           # Server utilities
+├── 🛠️  utils/              # Shared utilities
+│   ├── 🤖 model.js         # AI model configuration
+│   └── 📄 parser.js        # Document parsers
+├── 🔧 tools/               # Processing scripts
+├── 🖼️  views/              # Handlebars templates
+├── 📤 uploads/             # File upload directory
+├── 📥 downloads/           # Processed files
+└── 📚 docs/                # Comprehensive documentation
+```
+
+### 🔄 Data Flow
+
+1. **File Upload** → User uploads document via API/Web
+2. **Validation** → File type, size, and content validation
+3. **Parsing** → Extract text using appropriate document loader
+4. **AI Processing** → Send to Cohere AI for analysis
+5. **Response** → Return structured results to client
+
+For detailed architecture information, see [Architecture Documentation](docs/architecture/ARCHITECTURE.md).
+
+## 🚀 Deployment
+
+### Quick Deployment Options
+
+#### 🐳 Docker (Recommended)
+```bash
+# Build and run with Docker
+docker build -t dara .
+docker run -p 3000:3000 -e API_KEY=your_key dara
+```
+
+#### ☁️ Cloud Platforms
+- **AWS**: ECS, EC2, Lambda
+- **Google Cloud**: Cloud Run, Compute Engine
+- **Azure**: Container Instances, App Service
+- **Heroku**: One-click deployment
+
+#### 🖥️ Traditional Servers
+```bash
+# Production deployment with PM2
+npm install -g pm2
+pm2 start ecosystem.config.cjs
+pm2 save && pm2 startup
+```
+
+For comprehensive deployment instructions, see [Deployment Guide](docs/guides/DEPLOYMENT.md).
+
+## 📖 Documentation
+
+### 📚 Complete Documentation
+- [📋 API Reference](docs/api/API.md) - Complete REST API documentation
+- [🏗️ Architecture Guide](docs/architecture/ARCHITECTURE.md) - System design and components
+- [🔧 Development Setup](docs/guides/DEVELOPMENT.md) - Local development environment
+- [🚀 Deployment Guide](docs/guides/DEPLOYMENT.md) - Production deployment
+- [⚙️ Environment Variables](docs/guides/ENVIRONMENT.md) - Configuration reference
+- [🛠️ Troubleshooting](docs/guides/TROUBLESHOOTING.md) - Common issues and solutions
+
+### 🔗 Quick Links
+- [Technology Stack](docs/architecture/TECH_STACK.md)
+- [API Response Formats](docs/api/RESPONSES.md)
+- [Contributing Guidelines](CONTRIBUTING.md)
+
+## 🔧 Development
+
+### Prerequisites
+- Node.js v20+
+- npm v10+
+- Cohere AI API key
+
+### Development Commands
+```bash
+# Start development server
+npm run dev
+
+# Format code
+npm run lint
+
+# Production mode
+npm start
+```
+
+### Adding New Features
+1. Create route in `server/routes/`
+2. Add controller in `server/controllers/`
+3. Implement business logic
+4. Update documentation
+5. Test thoroughly
+
+See [Development Guide](docs/guides/DEVELOPMENT.md) for detailed instructions.
+
+## 🛠️ Troubleshooting
+
+### Common Issues
+- **Port in use**: Change `PORT` in `.env`
+- **API key errors**: Verify `API_KEY` in environment
+- **File upload issues**: Check file format and size
+- **Memory errors**: Reduce file size or increase Node.js memory
+
+For comprehensive troubleshooting, see [Troubleshooting Guide](docs/guides/TROUBLESHOOTING.md).
+
+## 🔐 Security
+
+Dara implements multiple security layers:
+- **Rate Limiting**: 100 requests per 15 minutes
+- **Input Validation**: Comprehensive request validation
+- **Security Headers**: Helmet.js protection
+- **CORS Protection**: Configurable origin restrictions
+- **File Validation**: Type and size checking
+
+## 🤝 Contributing
+
+We welcome contributions from the community! Dara is an open-source project that benefits from diverse perspectives and expertise.
+
+### 🚀 Ways to Contribute
+- **🐛 Bug Reports**: Report issues and bugs
+- **💡 Feature Requests**: Suggest new functionality  
+- **📖 Documentation**: Improve or expand documentation
+- **🔧 Code Contributions**: Submit pull requests
+- **🧪 Testing**: Help test new features and fixes
+- **🎨 Design**: Improve UI/UX and visual design
+
+### 📋 Contribution Process
+1. **Fork** the repository
+2. **Create** a feature branch: `git checkout -b feature/amazing-feature`
+3. **Commit** your changes: `git commit -m 'Add amazing feature'`
+4. **Push** to the branch: `git push origin feature/amazing-feature`
+5. **Open** a Pull Request
+
+### 📝 Guidelines
+- Follow existing code style and conventions
+- Write clear, descriptive commit messages
+- Include tests for new features
+- Update documentation as needed
+- Be respectful and constructive in discussions
+
+For detailed guidelines, see [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## 📄 License
+
+This project is licensed under the **GNU General Public License v3.0**.
+
+### 📜 License Summary
+- ✅ **Commercial use** - Use for commercial purposes
+- ✅ **Modification** - Modify the software
+- ✅ **Distribution** - Distribute the software
+- ✅ **Patent use** - Grant of patent rights
+- ✅ **Private use** - Use for private purposes
+- ❗ **Liability** - No liability protection
+- ❗ **Warranty** - No warranty provided
+- 📋 **License and copyright notice** - Must include
+- 📋 **State changes** - Must document changes
+- 📋 **Disclose source** - Must provide source code
+
+See the [LICENSE](LICENSE) file for full details.
+
+---
+
+<div align="center">
+
+## 🌟 Star the Project
+
+If you find Dara useful, please consider giving it a star! ⭐
+
+[![GitHub stars](https://img.shields.io/github/stars/oovaa/dara?style=social)](https://github.com/oovaa/dara/stargazers)
+
+**Made with ❤️ by the ALX Software Engineering Community**
+
+[🏠 Homepage](https://github.com/oovaa/dara) • [📖 Documentation](docs/) • [🐛 Issues](https://github.com/oovaa/dara/issues) • [💬 Discussions](https://github.com/oovaa/dara/discussions)
+
+</div>
 
