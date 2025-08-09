@@ -4,6 +4,7 @@
   "type": "module",
   "scripts": {
     "dev": "nodemon index.js",
+    "start": "bun index.js",
     "lint": "prettier --write *.js"
   },
   "devDependencies": {

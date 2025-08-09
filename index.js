@@ -33,6 +33,11 @@ app.set("views", "./views");
 app.use("/api", routes);
 app.use(globalErrorHandler);
 app.use(morgan("dev"));
+
+app.get('/z', (req, res) => {
+  res.json({ status: 200 })
+})
+
 app.get("/", (req, res) => {
   res.render("home", { DARAFRONT: process.env.FRONT_DOMAIN });
 });
