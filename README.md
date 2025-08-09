@@ -45,7 +45,7 @@ Dara is a modern, AI-powered document processing platform developed as part of t
 - **Conversational AI**: Interactive chat interface for document Q&A powered by Cohere
 - **Answer Generation**: Provide AI-powered answers based on document context
 - **Confidence Scoring**: Quality metrics for AI-generated content
-- **Memory Management**: Persistent conversation history with Redis
+- **Memory Management**: In-memory conversation history (no external database required)
 
 ### 🔒 Security & Performance
 - **Rate Limiting**: Intelligent request throttling (100 req/15min)

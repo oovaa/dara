@@ -197,7 +197,7 @@ curl -X POST \
 }
 ```
 
-**Note**: This endpoint requires Redis to be configured for session memory persistence. If Redis is not available, sessions will not persist between requests.
+**Note**: Session memory is now handled in-memory only. Redis is not required or used.
 
 ## 🚨 Error Handling
 

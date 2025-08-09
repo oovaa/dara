@@ -1,6 +1,6 @@
 import dotenv from 'dotenv'
 dotenv.config()
-import { RedisChatMessageHistory } from '@langchain/community/stores/message/ioredis'
+// RedisChatMessageHistory removed
 import { BufferMemory } from 'langchain/memory'
 import { ChatPromptTemplate, MessagesPlaceholder } from '@langchain/core/prompts'
 import { RunnableSequence } from '@langchain/core/runnables'
@@ -17,16 +17,13 @@ const sysPrompt = `Your name is Dara, You are a joyful girl (Real Girl), your jo
 
 Answer user questions kindly and helpfully. Provide clear, accurate, and informative responses.
 `
-const mkMemory = (session = new Date().toISOString()) =>
+
+// Use only BufferMemory (in-memory, no Redis)
+const mkMemory = () =>
   new BufferMemory({
     memoryKey: 'history',
     inputKey: 'question',
     outputKey: 'answer',
-    chatHistory: new RedisChatMessageHistory({
-      sessionId: session,
-      sessionTTL: 60 * 30, // 5 minutes, omit this parameter to make sessions never expire
-      url: process.env.REDIS_URL
-    }),
     returnMessages: true
   })
 
@@ -51,12 +48,12 @@ const runnableAgent = RunnableSequence.from([
   model
 ]).withConfig({ runName: 'CohereAgent' })
 
-const answerQuestion = async (question, session) => {
-  memory = mkMemory(session)
+
+const answerQuestion = async (question) => {
+  memory = mkMemory()
   const res = await runnableAgent.invoke({
     input: question
   })
-
   // Save the result and initial input to memory
   await memory.saveContext({ question: question }, { answer: res.content })
   return { output: res.content }

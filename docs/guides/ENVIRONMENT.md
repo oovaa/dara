@@ -63,8 +63,7 @@ LOG_FORMAT=combined
 # ===========================================
 # CACHE CONFIGURATION (Optional)
 # ===========================================
-REDIS_URL=redis://localhost:6379
-CACHE_TTL=3600
+; REDIS_URL and CACHE_TTL are deprecated and not required
 
 # ===========================================
 # DATABASE CONFIGURATION (Future Use)
@@ -206,18 +205,9 @@ DATABASE_URL=mongodb://localhost:27017/dara
 
 ### Cache Configuration (Optional)
 
-#### `REDIS_URL`
-- **Type**: String (URL)
-- **Default**: None (agent memory disabled if not provided)
-- **Description**: Redis connection URL for conversational agent memory persistence
-- **Example**: `REDIS_URL=redis://localhost:6379`
-- **Note**: Required for chat memory features in the conversational agent
 
-#### `CACHE_TTL`
-- **Type**: Number (seconds)
-- **Default**: `3600` (1 hour)
-- **Description**: Time-to-live for cached responses and chat sessions
-- **Example**: `CACHE_TTL=7200` (2 hours)
+#### `REDIS_URL` and `CACHE_TTL`
+No longer required. All chat memory is now stored in memory only. You do not need to set these variables.
 
 ## 🌍 Environment-Specific Configurations
 
