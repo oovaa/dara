@@ -10,10 +10,12 @@ Dara is built using modern, reliable technologies that ensure scalability, maint
 - **ES6 Modules** - Modern JavaScript module system
 
 ### AI & Machine Learning
-- **LangChain** (v0.2+) - Framework for developing AI applications
-- **Cohere AI** - Advanced language model API
+- **LangChain** (v0.2+) - Framework for developing AI applications  
+- **Cohere AI** - Advanced language model API (free tier available)
 - **@langchain/cohere** - Cohere integration for LangChain
 - **@langchain/community** - Community document loaders
+- **ChatCohere** - Conversational AI agent powered by Cohere
+- **Redis** (optional) - Chat memory persistence
 
 ### Document Processing
 - **pdf-parse** - PDF text extraction

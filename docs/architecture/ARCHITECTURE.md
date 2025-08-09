@@ -78,10 +78,10 @@ utils/
 ### Processing Tools
 ```
 tools/
-├── generateQs.js        # Question generation
-├── summarize.js         # Text summarization
-├── agent.js            # AI agent functionality
-└── audioToText.js      # Audio transcription
+├── generateQs.js        # Question generation using Cohere
+├── summarize.js         # Text summarization using Cohere
+├── agent.js            # Conversational AI agent using Cohere
+└── audioToText.js      # Audio transcription (disabled - previously used OpenAI)
 ```
 
 ## 🔄 Data Flow
@@ -135,8 +135,13 @@ Client Response
 ## 🔌 External Integrations
 
 ### AI Services
-- **Cohere AI**: Primary language model
-- **LangChain**: Document processing framework
+- **Cohere AI**: Primary language model for all AI operations
+  - Document summarization
+  - Question generation  
+  - Conversational AI agent
+  - Free tier available for development/testing
+- **LangChain**: Document processing framework and AI orchestration
+- **Redis** (optional): Chat memory persistence for conversational agent
 
 ### File Processing
 - **PDF**: `PDFLoader` for PDF documents

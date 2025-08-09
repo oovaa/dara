@@ -32,7 +32,8 @@ Thank you for your interest in contributing to Dara! We welcome contributions fr
 - **Node.js** v20.0.0 or higher
 - **npm** v10.0.0 or higher
 - **Git** (latest version)
-- **Cohere AI API Key** for testing
+- **Cohere AI API Key** for testing (free tier available)
+- **Redis** (optional, for chat memory features)
 
 ### 1. Fork and Clone
 ```bash
