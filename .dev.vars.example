@@ -1,0 +1,7 @@
+# Local development environment variables for Cloudflare Workers
+# Copy this to .dev.vars and update with your actual values
+# DO NOT commit .dev.vars to version control
+
+API_KEY=your_cohere_api_key_here
+NODE_ENV=development
+FRONT_DOMAIN=http://localhost:8787

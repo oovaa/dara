@@ -25,6 +25,12 @@ TestResults.xml
 bun.lockb
 
 .env
+.dev.vars
 package-lock.json
 
 node_modules/
+
+# Wrangler
+.wrangler/
+dist/
+
