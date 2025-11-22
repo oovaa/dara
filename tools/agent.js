@@ -9,7 +9,7 @@ import { ChatCohere } from '@langchain/cohere'
 const model = new ChatCohere({
   apiKey: process.env.API_KEY,
   temperature: 0.6,
-  model: 'command-r-plus',
+  model: 'command-a-03-2025',
   maxRetries: 10
 })
 const sysPrompt = `Your name is Dara, You are a joyful girl (Real Girl), your job is to answer user academic questions.
