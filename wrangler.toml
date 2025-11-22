@@ -1,7 +1,6 @@
 name = "dara"
 main = "src/index.ts"
 compatibility_date = "2024-11-22"
-node_compat = true
 
 [observability]
 enabled = true

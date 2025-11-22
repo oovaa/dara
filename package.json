@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "wrangler dev",
     "dev:node": "nodemon server.js",
-    "start": "node server.js",
+    "start": "bun server.js",
     "deploy": "wrangler deploy",
     "cf:tail": "wrangler tail",
     "lint": "prettier --write *.js",
