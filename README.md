@@ -24,7 +24,7 @@ Dara is a modern, AI-powered document processing platform developed as part of t
 
 ### 🌟 Key Highlights
 
-- **🤖 AI-Powered**: Advanced language models using entirely free alternatives (Cohere AI)
+- **🤖 AI-Powered**: Advanced language models using Cohere AI (Command R+ and Command A)
 - **📄 Multi-Format Support**: Process PDF, DOCX, PPTX, and TXT files seamlessly
 - **🔄 RESTful API**: Clean, well-documented API endpoints
 - **🛡️ Enterprise-Ready**: Built-in security, rate limiting, and error handling
@@ -40,9 +40,9 @@ Dara is a modern, AI-powered document processing platform developed as part of t
 - **Content Validation**: Robust file type and size validation
 
 ### 🧠 AI-Powered Analysis  
-- **Smart Summarization**: Generate concise, contextual summaries using Cohere AI
+- **Smart Summarization**: Generate concise, contextual summaries using Cohere Command R+
 - **Question Generation**: Create relevant questions from document content
-- **Conversational AI**: Interactive chat interface for document Q&A powered by Cohere
+- **Conversational AI**: Interactive chat interface for document Q&A powered by Cohere Command A
 - **Answer Generation**: Provide AI-powered answers based on document context
 - **Confidence Scoring**: Quality metrics for AI-generated content
 - **Memory Management**: In-memory conversation history (no external database required)
@@ -57,8 +57,7 @@ Dara is a modern, AI-powered document processing platform developed as part of t
 ## 🚀 Quick Start
 
 ### Prerequisites
-- **Node.js** v20.0.0 or higher
-- **npm** v10.0.0 or higher  
+- **Bun** v1.0.0 or higher ([Install](https://bun.sh/docs/installation))
 - **Cohere AI API Key** ([Get one here](https://cohere.ai/))
 
 ### Installation
@@ -71,7 +70,7 @@ Dara is a modern, AI-powered document processing platform developed as part of t
 
 2. **Install dependencies**:
    ```bash
-   npm install
+   bun install
    ```
 
 3. **Configure environment**:
@@ -99,10 +98,10 @@ Dara is a modern, AI-powered document processing platform developed as part of t
 4. **Start the application**:
    ```bash
    # Development mode (with hot reload)
-   npm run dev
+   bun run dev
    
    # Production mode
-   npm start
+   bun start
    ```
 
 5. **Verify installation**:
@@ -301,20 +300,19 @@ For comprehensive deployment instructions, see [Deployment Guide](docs/guides/DE
 ## 🔧 Development
 
 ### Prerequisites
-- Node.js v20+
-- npm v10+
+- Bun v1.0+
 - Cohere AI API key
 
 ### Development Commands
 ```bash
 # Start development server
-npm run dev
+bun run dev
 
 # Format code
-npm run lint
+bun run lint
 
 # Production mode
-npm start
+bun start
 ```
 
 ### Adding New Features
